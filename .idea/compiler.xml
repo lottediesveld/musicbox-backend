@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="user" />
+        <module name="playlist" />
+        <module name="music" />
+        <module name="admin" />
+        <module name="auth" />
+        <module name="library" />
+        <module name="common" />
+        <module name="artist" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="11" />
+      <module name="artist" target="11" />
+      <module name="auth" target="11" />
+      <module name="common" target="11" />
+      <module name="library" target="11" />
+      <module name="music" target="11" />
+      <module name="playlist" target="11" />
+      <module name="user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
+      <module name="artist" options="-parameters" />
+      <module name="auth" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="library" options="-parameters" />
+      <module name="music" options="-parameters" />
+      <module name="playlist" options="-parameters" />
+      <module name="user" options="-parameters" />
+    </option>
+  </component>
+</project>
