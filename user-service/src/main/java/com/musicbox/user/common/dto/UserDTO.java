@@ -1,7 +1,7 @@
 package com.musicbox.user.common.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.musicbox.user.common.security.Role;
+import com.musicbox.user.common.enums.Role;
 
 import java.util.Set;
 
