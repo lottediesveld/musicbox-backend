@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/admin/admin.iml" filepath="$PROJECT_DIR$/admin/admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/artist/artist.iml" filepath="$PROJECT_DIR$/artist/artist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/auth/auth.iml" filepath="$PROJECT_DIR$/auth/auth.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/music/music.iml" filepath="$PROJECT_DIR$/music/music.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin-service/admin-service.iml" filepath="$PROJECT_DIR$/admin-service/admin-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/artist-service/artist-service.iml" filepath="$PROJECT_DIR$/artist-service/artist-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/auth-service/auth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eurekaserver/eurekaserver.iml" filepath="$PROJECT_DIR$/eurekaserver/eurekaserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-service/library-service.iml" filepath="$PROJECT_DIR$/library-service/library-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/music-service/music-service.iml" filepath="$PROJECT_DIR$/music-service/music-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/musicbox-backend.iml" filepath="$PROJECT_DIR$/.idea/musicbox-backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/playlist/playlist.iml" filepath="$PROJECT_DIR$/playlist/playlist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/user/user.iml" filepath="$PROJECT_DIR$/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/playlist-service/playlist-service.iml" filepath="$PROJECT_DIR$/playlist-service/playlist-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
     </modules>
   </component>
 </project>
