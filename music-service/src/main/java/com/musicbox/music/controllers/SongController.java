@@ -3,24 +3,12 @@ package com.musicbox.music.controllers;
 import com.musicbox.music.models.Song;
 import com.musicbox.music.repositories.SongRepository;
 import com.musicbox.music.services.SongService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.amqp.core.AmqpTemplate;
 
 @Controller
 public class SongController {
-    @Autowired
-    private AmqpTemplate rabbitTemplate;
-
-    @Value("${workshop.rabbitmq.exchange}")
-    private String exchange;
-    @Value("${workshop.rabbitmq.routingkey}")
-    private String routingkey;
-
-
     private final SongService songService;
     private final SongRepository songRepo;
 
