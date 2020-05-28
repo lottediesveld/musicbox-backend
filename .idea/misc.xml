@@ -17,6 +17,9 @@
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/music-service/pom.xml" />
+        <option value="$PROJECT_DIR$/playlist-service/pom.xml" />
+        <option value="$PROJECT_DIR$/library-service/pom.xml" />
       </list>
     </option>
   </component>

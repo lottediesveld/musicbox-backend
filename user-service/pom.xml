@@ -90,6 +90,7 @@
     </dependencies>
 
     <build>
+        <finalName>user-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -100,11 +101,13 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>2.1.0</version>
                 <configuration>
+
                     <from>
                         <image>adoptopenjdk/openjdk13</image>
                     </from>
+
                     <to>
-                        <image>service-user</image>
+                        <image>docker.io/lottediesveld/user-service</image>
                     </to>
                 </configuration>
             </plugin>
