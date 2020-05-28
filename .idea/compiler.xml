@@ -9,12 +9,12 @@
         <module name="artist-service" />
         <module name="gateway" />
         <module name="music-service" />
-        <module name="playlist-service" />
+        <module name="auth-service" />
         <module name="library-service" />
         <module name="user-service" />
         <module name="eurekaserver" />
         <module name="admin-service" />
-        <module name="auth-service" />
+        <module name="playlist-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

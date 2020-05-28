@@ -1,7 +1,5 @@
 package com.musicbox.gateway;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -10,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
@@ -33,7 +33,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 // allow all who are accessing "auth" service
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
                 // must be an admin if trying to access admin area (authentication is also required here)
-                .antMatchers("/gallery" + "/admin/**").hasRole("ADMIN")
+//                .antMatchers("/gallery" + "/admin/**").hasRole("ADMIN")
                 // Any other request must be authenticated
                 .anyRequest().authenticated();
     }
