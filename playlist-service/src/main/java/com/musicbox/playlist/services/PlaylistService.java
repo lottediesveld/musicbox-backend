@@ -24,6 +24,7 @@ public class PlaylistService {
 
     public Playlist addSongToPlaylist(Song song, Playlist playlist) {
         playlist.getSongs().add(song);
+        playlistRepo.save(playlist);
         Playlist changedPlaylist = playlistRepo.findPlaylistById(playlist.getId());
         return changedPlaylist;
     }
