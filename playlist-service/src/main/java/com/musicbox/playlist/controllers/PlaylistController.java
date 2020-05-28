@@ -10,60 +10,61 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PlaylistController {
 
-    private final PlaylistService playlistServiceService;
+    private final PlaylistService playlistService;
     private final PlaylistRepository playlistRepo;
 
-    public PlaylistController(PlaylistService playlistServiceService, PlaylistRepository playlistRepo) {
-        this.playlistServiceService = playlistServiceService;
+    public PlaylistController(PlaylistService playlistService, PlaylistRepository playlistRepo) {
+        this.playlistService = playlistService;
         this.playlistRepo = playlistRepo;
     }
 
     @RequestMapping(value = REST_URI_Constant.findPlaylistIDByTitle, method = RequestMethod.GET)
     public @ResponseBody
     Long getId(@RequestParam("title") String title){
-        return playlistServiceService.getId(title);
+        return playlistService.getId(title);
     }
 
     //    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = REST_URI_Constant.deletePlaylist, method = RequestMethod.DELETE)
     public void delete(@RequestBody Playlist playlist) {
-        playlistServiceService.deletePlaylist(playlist);
+        playlistService.deletePlaylist(playlist);
     }
 
     //    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = REST_URI_Constant.findAllPlaylists, method = RequestMethod.GET)
     public @ResponseBody
     Iterable<Playlist> allPlaylists() {
-        return playlistServiceService.allplaylists();
+        Iterable<Playlist> playlists = playlistService.allplaylists();
+        return playlists;
     }
 
     @RequestMapping(value = REST_URI_Constant.findPlaylistByTitle, method = RequestMethod.GET)
     public @ResponseBody
     Playlist getPlaylistByTitle(@RequestParam("title") String title) {
-        return playlistServiceService.getByTitle(title);
+        return playlistService.getByTitle(title);
     }
 
     @RequestMapping(value = REST_URI_Constant.findPlaylistById, method = RequestMethod.GET)
     public @ResponseBody
     Playlist getPlaylistById(@RequestParam("id") long id) {
-        return playlistServiceService.getById(id);
+        return playlistService.getById(id);
     }
 
     @RequestMapping(value = REST_URI_Constant.addSongToPlaylist, method = RequestMethod.POST)
     public @ResponseBody
     Playlist addSongToPlaylist(@RequestParam("song") Song song, @RequestParam("playlist") Playlist playlist) {
-        return playlistServiceService.addSongToPlaylist(song, playlist);
+        return playlistService.addSongToPlaylist(song, playlist);
     }
 
     @RequestMapping(value = REST_URI_Constant.deleteSongFromPlaylist, method = RequestMethod.POST)
     public @ResponseBody
     Playlist deleteSongFromPlaylist(@RequestParam("song") Song song, @RequestParam("playlist") Playlist playlist) {
-        return playlistServiceService.deleteSongFromPlaylist(song, playlist);
+        return playlistService.deleteSongFromPlaylist(song, playlist);
     }
 
     @RequestMapping(value = REST_URI_Constant.createNewPlaylist, method = RequestMethod.POST)
     public @ResponseBody
     Playlist createNewPlaylist(@RequestParam("playlist") Playlist playlist) {
-        return playlistServiceService.newPlaylist(playlist);
+        return playlistService.newPlaylist(playlist);
     }
 }

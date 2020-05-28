@@ -2,6 +2,7 @@ package com.musicbox.playlist.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -30,11 +31,10 @@ public class Playlist {
     public Playlist() {
     }
 
-    public Playlist(long id, String title, Song... songs) {
+    public Playlist(long id, String title) {
         this.id = id;
         this.title = title;
-//        this.songs = Stream.of(songs).collect(Collectors.toSet());
-//        this.songs.forEach(x -> x.getPlaylists().add(this));
+        this.songs = new HashSet<Song>();
     }
 
     public long getId() {
