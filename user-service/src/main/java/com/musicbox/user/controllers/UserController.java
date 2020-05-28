@@ -17,6 +17,7 @@ public class UserController {
         this.userService = userService;
         this.userRepository = userRepository;
     }
+
     @RequestMapping(value = REST_URI_Constant.id, method = RequestMethod.GET)
     public @ResponseBody
     Long getId(@RequestParam("email") String email){
