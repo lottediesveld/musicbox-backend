@@ -5,6 +5,7 @@ public class REST_URI_Constant {
     public static final String userByUsername = "/UserController/user";
     public static final String deleteUser = "/UserController/delete";
     public static final String currentUser = "/UserController/current";
-    public static final String changePassword = "/user/changepass";
+    public static final String changePassword = "/UserController/changepass";
+    public static final String newUser = "UserController/newUser";
     public static final String id = "/UserController/id";
 }

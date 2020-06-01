@@ -1,4 +1,6 @@
 package com.musicbox.user.controllers;
+import com.google.gson.Gson;
+import com.musicbox.user.common.dto.UserRegisterDTO;
 import com.musicbox.user.common.models.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,16 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    @PostMapping(value = REST_URI_Constant.newUser)
+    public @ResponseBody
+    String customerRegister(@RequestBody String user) throws Exception {
+        Gson gson = new Gson();
+        var userObject = gson.fromJson(user, UserRegisterDTO.class);
+
+        return gson.toJson(userService.newUser(userObject));
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.id, method = RequestMethod.GET)
     public @ResponseBody
     Long getId(@RequestParam("email") String email){
@@ -37,13 +49,14 @@ public class UserController {
         return userService.alluser();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.currentUser, method = RequestMethod.GET)
     public @ResponseBody
     User current() {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        final String email = (String) auth.getPrincipal();
-        return userRepository.findUserByEmail(email);
+        final String username = (String) auth.getPrincipal();
+
+        return userRepository.findUserByUsername(username);
     }
 
     @PreAuthorize("isAuthenticated()")
