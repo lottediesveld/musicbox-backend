@@ -51,13 +51,15 @@ public class UserService {
             userRepository.save(updateUser);
             updateUser.setPassword(null);
             return "saved";
+        } else if (!userRepository.existsByEmail(user.getEmail()) || !userRepository.existsByUsername(user.getUsername())) {
+            var updateUser = modelMapper.map(user, User.class);
+            userRepository.save(updateUser);
+            return "saved";
         } else {
             throw new Exception("Wrong combination");
         }
-//        userRepository.save(user);
-//        User newuser = userRepository.findUserByEmail(user.getEmail());
-//        return newuser;
     }
+
     public Long getId(String email){
         return userRepository.findIdByEmail(email);
     }
