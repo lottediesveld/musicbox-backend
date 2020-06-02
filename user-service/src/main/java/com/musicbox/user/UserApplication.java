@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,7 +21,6 @@ import static com.musicbox.user.common.security.Role.USER;
 
 @EnableEurekaClient
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class,RepositoryRestMvcAutoConfiguration.class})
-@ComponentScan
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class UserApplication {
 

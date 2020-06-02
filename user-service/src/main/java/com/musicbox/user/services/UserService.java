@@ -62,7 +62,6 @@ public class UserService {
         return userRepository.findIdByEmail(email);
     }
 
-
     public Iterable<User> alluser() {
         return userRepository.findAll();
     }
