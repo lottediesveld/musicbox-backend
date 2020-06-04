@@ -1,9 +1,7 @@
 package com.musicbox.playlist.models;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -16,32 +14,36 @@ public class Playlist {
     private long id;
 
     @Column(nullable = false)
+    private long userId;
+
+    @Column(nullable = false)
     private String title;
 
-    public Collection<Song> getSongs() {
+    public List<Song> getSongs() {
         return songs;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private List<Long> songIds;
+
+//    @Column(nullable = false)
+//    private HashSet<Long> songs;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "song_playlist",
             joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"))
-    private Set<Song> songs;
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinTable(name = "user")
-//    public getUser() {
-//        return user;
-//    }
+    private List<Song> songs;
 
     public Playlist() {
-        this.songs = new HashSet<Song>();
+        this.songs = new ArrayList<>();
     }
 
-    public Playlist(long id, String title) {
+    public Playlist(long id, long userId, String title) {
         this.id = id;
+        this.userId = userId;
         this.title = title;
-        this.songs = new HashSet<Song>();
+        this.songs = new ArrayList<>();
     }
 
     public long getId() {
@@ -60,8 +62,12 @@ public class Playlist {
         this.title = title;
     }
 
-    public void setSongs(Set<Song> songs) {
+    public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public void addToPlaylist(Song song) {
+        songs.add(song);
     }
 
     public void removeFromPlaylist(Long songid){

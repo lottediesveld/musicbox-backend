@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlaylistRepository extends CrudRepository<Playlist, Long> {
     Playlist findPlaylistByTitle(String title);
-//    Playlist addSongToPlaylist(Song song, Playlist playlist);
+    Playlist findPlaylistByUserId(Long user_id);
     long findIdByTitle(String title);
     Playlist findPlaylistById(long id);
 //    Playlist deleteSongFromPlaylist(Song song, Playlist playlist);

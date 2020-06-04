@@ -31,11 +31,10 @@ public class PlaylistController {
         playlistService.deletePlaylist(playlist);
     }
 
-    //    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = REST_URI_Constant.findAllPlaylists, method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Playlist> allPlaylists() {
-        Iterable<Playlist> playlists = playlistService.allplaylists();
+    Iterable<Playlist> allPlaylists(@RequestParam("id") Long id) {
+        Iterable<Playlist> playlists = playlistService.allplaylists(id);
         return playlists;
     }
 
