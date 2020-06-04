@@ -28,7 +28,14 @@ public class Playlist {
             inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"))
     private Set<Song> songs;
 
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinTable(name = "user")
+//    public getUser() {
+//        return user;
+//    }
+
     public Playlist() {
+        this.songs = new HashSet<Song>();
     }
 
     public Playlist(long id, String title) {
@@ -55,5 +62,9 @@ public class Playlist {
 
     public void setSongs(Set<Song> songs) {
         this.songs = songs;
+    }
+
+    public void removeFromPlaylist(Long songid){
+        this.songs.removeIf(song -> song.getId() == songid);
     }
 }

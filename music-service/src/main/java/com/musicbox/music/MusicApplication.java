@@ -10,11 +10,9 @@ import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoCon
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 @EnableEurekaClient
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class})
-@ComponentScan
 public class MusicApplication {
     @Bean
     public ModelMapper modelMapper() {

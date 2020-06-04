@@ -8,5 +8,6 @@ public class REST_URI_Constant {
     public static final String songByTitleAndArtist = "SongController/songByTitleAndArtist";
     public static final String addsong = "SongController/addSong";
     public static final String deletesong = "SongController/delete";
+    public static final String searchSong = "SongController/search";
 }
 

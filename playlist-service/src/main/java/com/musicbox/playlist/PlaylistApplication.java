@@ -31,8 +31,12 @@ public class PlaylistApplication {
     @Bean
     public CommandLineRunner demo(PlaylistService playlistService, PlaylistRepository playlistRepository) {
         return args -> {
-            var playlist1 = new Playlist(1, "testplaylist");
+            var playlist1 = new Playlist(1, "lagorasplaylist");
             playlistService.newPlaylist(playlist1);
+            var playlist2 = new Playlist(2, "victorysplaylist");
+            playlistService.newPlaylist(playlist2);
+            var playlist3 = new Playlist(3, "qarnixsplaylist");
+            playlistService.newPlaylist(playlist3);
             //playlistRepository.save(playlist1);
 
             var song1 = new Song(1, "Love the way you lie", "Recovery", "Eminem");
@@ -43,7 +47,10 @@ public class PlaylistApplication {
             playlistService.addSongToPlaylist(song2, playlist1);
             playlistService.addSongToPlaylist(song3, playlist1);
 
-            //playlistRepository.save(playlistService.getById(1));
+            playlistService.addSongToPlaylist(song3, playlist2);
+
+            playlistService.addSongToPlaylist(song1, playlist3);
+            playlistService.addSongToPlaylist(song3, playlist3);
         };
     }
 }

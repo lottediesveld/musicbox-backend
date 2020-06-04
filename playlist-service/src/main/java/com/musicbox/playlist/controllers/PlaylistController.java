@@ -1,7 +1,8 @@
 package com.musicbox.playlist.controllers;
 
+import com.google.gson.Gson;
+import com.musicbox.playlist.DTO.AddToPlaylistDTO;
 import com.musicbox.playlist.models.Playlist;
-import com.musicbox.playlist.models.Song;
 import com.musicbox.playlist.repositories.PlaylistRepository;
 import com.musicbox.playlist.services.PlaylistService;
 import org.springframework.stereotype.Controller;
@@ -52,14 +53,20 @@ public class PlaylistController {
 
     @RequestMapping(value = REST_URI_Constant.addSongToPlaylist, method = RequestMethod.POST)
     public @ResponseBody
-    Playlist addSongToPlaylist(@RequestParam("song") Song song, @RequestParam("playlist") Playlist playlist) {
-        return playlistService.addSongToPlaylist(song, playlist);
+    Playlist addSongToPlaylist(@RequestBody String dto) {
+        Gson gson = new Gson();
+        var dtoObject = gson.fromJson(dto, AddToPlaylistDTO.class);
+
+        return playlistService.addSongToPlaylist(dtoObject.getSong(), dtoObject.getPlaylist());
     }
 
     @RequestMapping(value = REST_URI_Constant.deleteSongFromPlaylist, method = RequestMethod.POST)
     public @ResponseBody
-    Playlist deleteSongFromPlaylist(@RequestParam("song") Song song, @RequestParam("playlist") Playlist playlist) {
-        return playlistService.deleteSongFromPlaylist(song, playlist);
+    Playlist deleteSongFromPlaylist(@RequestBody String dto) {
+        Gson gson = new Gson();
+        var dtoObject = gson.fromJson(dto, AddToPlaylistDTO.class);
+
+        return playlistService.deleteSongFromPlaylist(dtoObject.getSong(), dtoObject.getPlaylist());
     }
 
     @RequestMapping(value = REST_URI_Constant.createNewPlaylist, method = RequestMethod.POST)
