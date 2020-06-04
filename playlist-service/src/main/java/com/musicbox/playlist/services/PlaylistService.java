@@ -44,7 +44,9 @@ public class PlaylistService {
     public Playlist getByTitle(String title) { return  playlistRepo.findPlaylistByTitle(title); }
 
     public Playlist deleteSongFromPlaylist(Song song, Playlist playlist) {
-        playlist.getSongs().remove(song);
+        Playlist test = playlistRepo.findPlaylistByTitle(playlist.getTitle());
+        test.removeFromPlaylist(song.getId());
+        playlistRepo.save(test);
         Playlist changedPlaylist = playlistRepo.findPlaylistById(playlist.getId());
         return changedPlaylist;
     }

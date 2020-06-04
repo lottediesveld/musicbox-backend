@@ -51,6 +51,14 @@ public class User implements UserDetails, Serializable{
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "auth_id"))
     private Set<CustomGrantedAuthority> authorities;
 
+//    public Collection<Playlist> getPlaylists() {
+//        return playlists;
+//    }
+//
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "playlist")
+//    private Set<Playlist> playlists;
+
     public User() {
     }
 

@@ -5,6 +5,9 @@ import com.musicbox.music.repositories.SongRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class SongService {
     private final SongRepository songRepo;
@@ -24,13 +27,20 @@ public class SongService {
         return songRepo.findIdByTitle(name);
     }
 
-
     public Iterable<Song> allsongs() {
         return songRepo.findAll();
     }
 
     public Song getByTitle(String title) {
-        return songRepo.findSongByTitle(title);
+        return songRepo.findSongByTitleContainingIgnoreCase(title);
+    }
+
+    public Song getByArtist(String Artist) {
+        return songRepo.findSongByArtistContainingIgnoreCase(Artist);
+    }
+
+    public Song getByAlbum(String Album) {
+        return songRepo.findSongByAlbumContainingIgnoreCase(Album);
     }
 
     public Song getByNameAndAlbum(String name, String album) {
@@ -39,6 +49,18 @@ public class SongService {
 
     public Song getByTitleAndArtist(String title, String artist) {
         return songRepo.findSongByTitleAndArtist(title, artist);
+    }
+
+    public Iterable<Song> searchSongs(String search) {
+        List<Song> foundSongs = new ArrayList<>();
+        if (getByTitle(search) != null){
+            foundSongs.add(getByTitle(search));
+        } else if (getByArtist(search) != null) {
+            foundSongs.add(getByArtist(search));
+        } else if (getByAlbum(search) != null) {
+            foundSongs.add(getByAlbum(search));
+        }
+        return foundSongs;
     }
 
     //TODO: make artist only

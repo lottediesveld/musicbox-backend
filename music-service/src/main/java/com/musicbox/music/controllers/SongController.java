@@ -53,4 +53,10 @@ public class SongController {
     Song getSongByTitleAndArtist(@RequestParam("title") String title, @RequestParam("artist") String artist) {
         return songService.getByTitleAndArtist(title, artist);
     }
+
+    @RequestMapping(value = REST_URI_Constant.searchSong, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Iterable<Song> searchSongs(@RequestParam("search") String search) {
+        return songService.searchSongs(search);
+    }
 }
