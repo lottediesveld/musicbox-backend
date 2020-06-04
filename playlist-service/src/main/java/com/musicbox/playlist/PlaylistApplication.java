@@ -12,11 +12,9 @@ import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoCon
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 @EnableEurekaClient
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class})
-@ComponentScan
 public class PlaylistApplication {
 
     @Bean
@@ -31,12 +29,12 @@ public class PlaylistApplication {
     @Bean
     public CommandLineRunner demo(PlaylistService playlistService, PlaylistRepository playlistRepository) {
         return args -> {
-            var playlist1 = new Playlist(1, "lagorasplaylist");
-            playlistService.newPlaylist(playlist1);
-            var playlist2 = new Playlist(2, "victorysplaylist");
-            playlistService.newPlaylist(playlist2);
-            var playlist3 = new Playlist(3, "qarnixsplaylist");
-            playlistService.newPlaylist(playlist3);
+            var playlist1 = new Playlist(1, 4,"lagorasplaylist");
+            playlist1 = playlistService.newPlaylist(playlist1);
+            var playlist2 = new Playlist(2, 1, "victorysplaylist");
+            playlist2 =playlistService.newPlaylist(playlist2);
+            var playlist3 = new Playlist(3, 7, "qarnixsplaylist");
+            playlist3  = playlistService.newPlaylist(playlist3);
             //playlistRepository.save(playlist1);
 
             var song1 = new Song(1, "Love the way you lie", "Recovery", "Eminem");

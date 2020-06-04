@@ -55,8 +55,14 @@ public class UserController {
     User current() {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final String username = (String) auth.getPrincipal();
+        User user = userRepository.findUserByUsername(username);
 
-        return userRepository.findUserByUsername(username);
+        for(User usertest: userRepository.findAll()){
+            System.out.println(usertest.getId());
+            System.out.println(usertest.getUsername());
+        }
+
+        return user;
     }
 
     @PreAuthorize("isAuthenticated()")

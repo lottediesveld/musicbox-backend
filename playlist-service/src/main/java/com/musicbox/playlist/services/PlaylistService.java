@@ -6,6 +6,9 @@ import com.musicbox.playlist.repositories.PlaylistRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PlaylistService {
     private final PlaylistRepository playlistRepo;
@@ -23,8 +26,9 @@ public class PlaylistService {
     }
 
     public Playlist addSongToPlaylist(Song song, Playlist playlist) {
-        playlist.getSongs().add(song);
-        playlistRepo.save(playlist);
+        Playlist existingPlaylist = playlistRepo.findPlaylistById(playlist.getId());
+        existingPlaylist.addToPlaylist(song);
+        playlistRepo.save(existingPlaylist);
         Playlist changedPlaylist = playlistRepo.findPlaylistById(playlist.getId());
         return changedPlaylist;
     }
@@ -33,8 +37,10 @@ public class PlaylistService {
         return playlistRepo.findIdByTitle(title);
     }
 
-    public Iterable<Playlist> allplaylists() {
-        return playlistRepo.findAll();
+    public Iterable<Playlist> allplaylists(Long user_id) {
+        List<Playlist> test = new ArrayList<>();
+        test.add(playlistRepo.findPlaylistByUserId(user_id));
+        return test;
     }
 
     public Playlist getById(long id) {
