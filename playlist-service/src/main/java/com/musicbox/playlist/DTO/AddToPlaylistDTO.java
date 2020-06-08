@@ -1,25 +1,22 @@
 package com.musicbox.playlist.DTO;
 
-import com.musicbox.playlist.models.Playlist;
-import com.musicbox.playlist.models.Song;
-
 public class AddToPlaylistDTO {
-    Song song;
-    Playlist playlist;
+    Long song;
+    Long playlist;
 
     public AddToPlaylistDTO() {
     }
 
-    public AddToPlaylistDTO(Song song, Playlist playlist) {
+    public AddToPlaylistDTO(Long song, Long playlist) {
         this.song = song;
         this.playlist = playlist;
     }
 
-    public Song getSong() {
+    public Long getSong() {
         return song;
     }
 
-    public Playlist getPlaylist() {
+    public Long getPlaylist() {
         return playlist;
     }
 }

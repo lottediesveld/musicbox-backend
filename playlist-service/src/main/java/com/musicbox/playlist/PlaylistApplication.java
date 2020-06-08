@@ -37,18 +37,18 @@ public class PlaylistApplication {
             playlist3  = playlistService.newPlaylist(playlist3);
             //playlistRepository.save(playlist1);
 
-            var song1 = new Song(1, "Love the way you lie", "Recovery", "Eminem");
-            var song2 = new Song(2, "Water", "It Was Good Until It Wasn't", "Kehlani");
-            var song3 = new Song(3, "Rope", "Wasting Light", "Foo Fighters");
+            var song1 = new Song(1);
+            var song2 = new Song(2);
+            var song3 = new Song(3);
 
-            playlistService.addSongToPlaylist(song1, playlist1);
-            playlistService.addSongToPlaylist(song2, playlist1);
-            playlistService.addSongToPlaylist(song3, playlist1);
+            playlistService.addSongToPlaylist(song1.getId(), playlist1.getId());
+            playlistService.addSongToPlaylist(song2.getId(), playlist1.getId());
+            playlistService.addSongToPlaylist(song3.getId(), playlist1.getId());
 
-            playlistService.addSongToPlaylist(song3, playlist2);
+            playlistService.addSongToPlaylist(song3.getId(), playlist2.getId());
 
-            playlistService.addSongToPlaylist(song1, playlist3);
-            playlistService.addSongToPlaylist(song3, playlist3);
+            playlistService.addSongToPlaylist(song1.getId(), playlist3.getId());
+            playlistService.addSongToPlaylist(song3.getId(), playlist3.getId());
         };
     }
 }

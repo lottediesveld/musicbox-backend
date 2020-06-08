@@ -31,6 +31,8 @@ public class SongService {
         return songRepo.findAll();
     }
 
+    public Song getById(Long id) { return songRepo.findSongById(id); }
+
     public Song getByTitle(String title) {
         return songRepo.findSongByTitleContainingIgnoreCase(title);
     }

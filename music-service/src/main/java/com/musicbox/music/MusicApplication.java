@@ -26,9 +26,9 @@ public class MusicApplication {
     @Bean
     public CommandLineRunner demo(SongRepository songRepository) {
         return args -> {
-            var song1 = new Song(1, "Love the way you lie", "Recovery", "Eminem");
-            var song2 = new Song(2, "Water", "It Was Good Until It Wasn't", "Kehlani");
-            var song3 = new Song(3, "Rope", "Wasting Light", "Foo Fighters");
+            var song1 = new Song("Love the way you lie", "Recovery", "Eminem");
+            var song2 = new Song("Water", "It Was Good Until It Wasn't", "Kehlani");
+            var song3 = new Song("Rope", "Wasting Light", "Foo Fighters");
 
             song1 = songRepository.save(song1);
             song2 = songRepository.save(song2);

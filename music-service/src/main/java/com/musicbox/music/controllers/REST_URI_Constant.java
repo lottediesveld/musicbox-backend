@@ -3,6 +3,7 @@ package com.musicbox.music.controllers;
 public class REST_URI_Constant {
     public static final String idByTitle = "SongController/idByTitle";
     public static final String allsongs = "SongController/all";
+    public static final String songById = "SongController/songById";
     public static final String songByTitle = "SongController/songByTitle";
     public static final String songByTitleAndAlbum = "SongController/songByTitleAndAlbum";
     public static final String songByTitleAndArtist = "SongController/songByTitleAndArtist";

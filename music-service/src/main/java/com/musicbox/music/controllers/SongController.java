@@ -36,6 +36,13 @@ public class SongController {
         return songService.allsongs();
     }
 
+    @RequestMapping(value = REST_URI_Constant.songById, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Song getSongByTitle(@RequestParam("id") Long id) {
+        System.out.println(id);
+        return songService.getById(id);
+    }
+
     @RequestMapping(value = REST_URI_Constant.songByTitle, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     Song getSongByTitle(@RequestParam("title") String title) {
