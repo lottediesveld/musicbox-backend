@@ -72,8 +72,15 @@ public class UserService {
         return userRepository.findUserByEmail(email);
     }
 
-    public void DeleteUser(User user) {
+    public String deleteUser(String username) {
+        User user = userRepository.findUserByUsername(username);
         userRepository.delete(user);
+
+        if (userRepository.findUserByUsername(username) == null){
+            return "successful";
+        } else {
+            return "unsuccessful";
+        }
     }
 
     public User getByUsername(String username) {
