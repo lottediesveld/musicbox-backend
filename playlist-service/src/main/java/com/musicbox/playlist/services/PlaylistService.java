@@ -25,12 +25,16 @@ public class PlaylistService {
         return newPlaylist;
     }
 
-    public Playlist addSongToPlaylist(Song song, Playlist playlist) {
-        Playlist existingPlaylist = playlistRepo.findPlaylistById(playlist.getId());
+    public Playlist addSongToPlaylist(Long song, Long playlist) {
+        System.out.println("Id to put in playlist: " + song);
+        Playlist existingPlaylist = playlistRepo.findPlaylistById(playlist);
         existingPlaylist.addToPlaylist(song);
         playlistRepo.save(existingPlaylist);
-        Playlist changedPlaylist = playlistRepo.findPlaylistById(playlist.getId());
-        return changedPlaylist;
+        Playlist changed = playlistRepo.findPlaylistById(playlist);
+        for (Song songInPlaylist:changed.getSongs()) {
+            System.out.println("Song in playlist: " + songInPlaylist.getId());
+        }
+        return changed;
     }
 
     public Long getId(String title) {
@@ -49,12 +53,11 @@ public class PlaylistService {
 
     public Playlist getByTitle(String title) { return  playlistRepo.findPlaylistByTitle(title); }
 
-    public Playlist deleteSongFromPlaylist(Song song, Playlist playlist) {
-        Playlist test = playlistRepo.findPlaylistByTitle(playlist.getTitle());
-        test.removeFromPlaylist(song.getId());
+    public Playlist deleteSongFromPlaylist(Long song, Long playlist) {
+        Playlist test = playlistRepo.findPlaylistById(playlist);
+        test.removeSongFromPlaylist(song);
         playlistRepo.save(test);
-        Playlist changedPlaylist = playlistRepo.findPlaylistById(playlist.getId());
-        return changedPlaylist;
+        return playlistRepo.findPlaylistById(playlist);
     }
 
     public void deletePlaylist(Playlist playlist) {

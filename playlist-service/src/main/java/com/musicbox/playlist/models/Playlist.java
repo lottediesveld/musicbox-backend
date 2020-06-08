@@ -23,12 +23,6 @@ public class Playlist {
         return songs;
     }
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Long> songIds;
-
-//    @Column(nullable = false)
-//    private HashSet<Long> songs;
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "song_playlist",
             joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "id"),
@@ -43,6 +37,7 @@ public class Playlist {
         this.id = id;
         this.userId = userId;
         this.title = title;
+//        this.songIds = new ArrayList<>();
         this.songs = new ArrayList<>();
     }
 
@@ -66,11 +61,19 @@ public class Playlist {
         this.songs = songs;
     }
 
-    public void addToPlaylist(Song song) {
-        songs.add(song);
+    public void addToPlaylist(Long songId) {
+        songs.add(new Song(songId));
     }
 
-    public void removeFromPlaylist(Long songid){
-        this.songs.removeIf(song -> song.getId() == songid);
+//    public void addSongToPlaylist(Song song) {
+//        songs.add(song);
+//    }
+
+//    public void removeFromPlaylist(Long songid){
+//        songIds.removeIf(songId -> songId == songid);
+//    }
+
+    public void removeSongFromPlaylist(Long songid){
+        songs.removeIf(song -> song.getId() == songid);
     }
 }
