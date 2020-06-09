@@ -10,5 +10,5 @@ public interface PlaylistRepository extends CrudRepository<Playlist, Long> {
     Playlist findPlaylistByUserId(Long user_id);
     long findIdByTitle(String title);
     Playlist findPlaylistById(long id);
-//    Playlist deleteSongFromPlaylist(Song song, Playlist playlist);
+    void deletePlaylistById(long id);
 }

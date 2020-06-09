@@ -1,8 +1,10 @@
 package com.musicbox.user.services;
 
+import com.google.gson.Gson;
 import com.musicbox.user.common.dto.UserRegisterDTO;
 import com.musicbox.user.common.models.User;
 import com.musicbox.user.common.utils.AuthenticationUtils;
+import com.musicbox.user.eventbus.MessageProducer;
 import com.musicbox.user.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,11 +17,13 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private MessageProducer messageProducer;
 
-    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, MessageProducer messageProducer) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.messageProducer = messageProducer;
     }
 
     public String newUser(UserRegisterDTO user) throws Exception {
@@ -75,6 +79,8 @@ public class UserService {
     public String deleteUser(String username) {
         User user = userRepository.findUserByUsername(username);
         userRepository.delete(user);
+        Gson gson = new Gson();
+        messageProducer.deletePlaylistFromUser(gson.toJson(user.getId()));
 
         if (userRepository.findUserByUsername(username) == null){
             return "successful";

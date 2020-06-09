@@ -37,7 +37,6 @@ public class Playlist {
         this.id = id;
         this.userId = userId;
         this.title = title;
-//        this.songIds = new ArrayList<>();
         this.songs = new ArrayList<>();
     }
 
@@ -47,6 +46,14 @@ public class Playlist {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {
