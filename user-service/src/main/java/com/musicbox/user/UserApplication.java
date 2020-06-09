@@ -42,9 +42,9 @@ public class UserApplication {
     public CommandLineRunner demo(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return args -> {
 
-            var user1 = new User( 1, "Victor", "Leeuwen", "victory", passwordEncoder.encode("test2"), "test@test.com", true, true, true, true, USER.getGrantedAuthorities()); //default
-            var user2 = new User( 2, "Lotte", "Diesveld", "lagora", passwordEncoder.encode("test2"), "test2@test.com", true, true, true, true, USER.getGrantedAuthorities());
-            var user3 = new User( 3, "Joris", "Wijnen", "qarnix", passwordEncoder.encode("test2"), "test3@test.com", true, true, true, true, USER.getGrantedAuthorities());
+            var user1 = new User( "Victor", "Leeuwen", "victory", passwordEncoder.encode("test2"), "test@test.com", true, true, true, true, USER.getGrantedAuthorities()); //default
+            var user2 = new User("Lotte", "Diesveld", "lagora", passwordEncoder.encode("test2"), "test2@test.com", true, true, true, true, USER.getGrantedAuthorities());
+            var user3 = new User("Joris", "Wijnen", "qarnix", passwordEncoder.encode("test2"), "test3@test.com", true, true, true, true, USER.getGrantedAuthorities());
 
             userRepository.save(user1);
             userRepository.save(user2);
@@ -62,5 +62,4 @@ public class UserApplication {
             return new RestTemplate();
         }
     }
-
 }

@@ -2,7 +2,6 @@ package com.musicbox.playlist;
 
 import com.musicbox.playlist.models.Playlist;
 import com.musicbox.playlist.models.Song;
-import com.musicbox.playlist.repositories.PlaylistRepository;
 import com.musicbox.playlist.services.PlaylistService;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +15,8 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class})
 public class PlaylistApplication {
+//    @Bean
+//    public PlaylistRepository playlistRepository() {return new PlaylistRepository();}
 
     @Bean
     public ModelMapper modelMapper() {
@@ -27,7 +28,7 @@ public class PlaylistApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(PlaylistService playlistService, PlaylistRepository playlistRepository) {
+    public CommandLineRunner demo(PlaylistService playlistService) {
         return args -> {
             var playlist1 = new Playlist(1, 4,"lagorasplaylist");
             playlist1 = playlistService.newPlaylist(playlist1);

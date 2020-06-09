@@ -36,10 +36,15 @@ public class UserController {
         return userService.getId(email);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.deleteUser, method = RequestMethod.DELETE)
-    public void delete(@RequestBody User user) {
-        userService.DeleteUser(user);
+    public @ResponseBody
+    String delete() {
+        Gson gson = new Gson();
+        final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        final String username = (String) auth.getPrincipal();
+
+        return gson.toJson(userService.deleteUser(username));
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -49,7 +54,7 @@ public class UserController {
         return userService.alluser();
     }
 
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.currentUser, method = RequestMethod.GET)
     public @ResponseBody
     User current() {

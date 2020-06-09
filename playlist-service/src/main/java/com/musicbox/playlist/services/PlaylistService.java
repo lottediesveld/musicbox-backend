@@ -41,10 +41,14 @@ public class PlaylistService {
         return playlistRepo.findIdByTitle(title);
     }
 
-    public Iterable<Playlist> allplaylists(Long user_id) {
+    public Iterable<Playlist> allplaylistsOfUser(Long user_id) {
         List<Playlist> test = new ArrayList<>();
         test.add(playlistRepo.findPlaylistByUserId(user_id));
         return test;
+    }
+
+    public Iterable<Playlist> allplaylists() {
+        return playlistRepo.findAll();
     }
 
     public Playlist getById(long id) {

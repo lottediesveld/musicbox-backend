@@ -51,19 +51,10 @@ public class User implements UserDetails, Serializable{
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "auth_id"))
     private Set<CustomGrantedAuthority> authorities;
 
-//    public Collection<Playlist> getPlaylists() {
-//        return playlists;
-//    }
-//
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "playlist")
-//    private Set<Playlist> playlists;
-
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, String username, String password, String email, boolean isAccountNonExpired, boolean isEnabled, boolean isAccountNonLocked, boolean isCredentialsNonExpired, Set<CustomGrantedAuthority> customGrantedAuthorities) {
-        this.id = id;
+    public User(String firstName, String lastName, String username, String password, String email, boolean isAccountNonExpired, boolean isEnabled, boolean isAccountNonLocked, boolean isCredentialsNonExpired, Set<CustomGrantedAuthority> customGrantedAuthorities) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;

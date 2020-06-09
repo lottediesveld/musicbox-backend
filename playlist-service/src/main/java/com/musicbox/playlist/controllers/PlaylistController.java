@@ -31,10 +31,17 @@ public class PlaylistController {
         playlistService.deletePlaylist(playlist);
     }
 
+    @RequestMapping(value = REST_URI_Constant.findAllPlaylistsOfUser, method = RequestMethod.GET)
+    public @ResponseBody
+    Iterable<Playlist> allPlaylistsOfUser(@RequestParam("id") Long id) {
+        Iterable<Playlist> playlists = playlistService.allplaylistsOfUser(id);
+        return playlists;
+    }
+
     @RequestMapping(value = REST_URI_Constant.findAllPlaylists, method = RequestMethod.GET)
     public @ResponseBody
-    Iterable<Playlist> allPlaylists(@RequestParam("id") Long id) {
-        Iterable<Playlist> playlists = playlistService.allplaylists(id);
+    Iterable<Playlist> allPlaylists() {
+        Iterable<Playlist> playlists = playlistService.allplaylists();
         return playlists;
     }
 
