@@ -5,6 +5,7 @@ import com.musicbox.user.common.models.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.musicbox.user.repositories.UserRepository;
@@ -12,12 +13,15 @@ import com.musicbox.user.services.UserService;
 
 @Controller
 public class UserController {
+
     private final UserService userService;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping(value = REST_URI_Constant.newUser)
@@ -25,6 +29,8 @@ public class UserController {
     String customerRegister(@RequestBody String user) throws Exception {
         Gson gson = new Gson();
         var userObject = gson.fromJson(user, UserRegisterDTO.class);
+
+        userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
 
         return gson.toJson(userService.newUser(userObject));
     }
@@ -73,7 +79,6 @@ public class UserController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.changePassword, method = RequestMethod.POST)
     public boolean changePassword(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
-
         return userService.changePassword(current(), oldPass, newPass);
     }
 

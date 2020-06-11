@@ -15,12 +15,22 @@ public class MessageConfig {
     private static class ConsumerConfig {
 
         @Bean
+        public Queue newUserQueue() {
+            return new AnonymousQueue();
+        }
+
+        @Bean
         public Queue deleteUserQueue() {
             return new AnonymousQueue();
         }
 
         @Bean
-        public Binding bindingUser(DirectExchange directExchangeUser, Queue deleteUserQueue) {
+        public Binding bindingNewUser(DirectExchange directExchangeUser, Queue newUserQueue) {
+            return BindingBuilder.bind(newUserQueue).to(directExchangeUser).with("new-user");
+        }
+
+        @Bean
+        public Binding bindingDeleteUser(DirectExchange directExchangeUser, Queue deleteUserQueue) {
             return BindingBuilder.bind(deleteUserQueue).to(directExchangeUser).with("delete-user");
         }
 

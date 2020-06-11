@@ -1,4 +1,4 @@
-package com.musicbox.auth;
+package com.musicbox.auth.common.models;
 
 import org.springframework.security.core.GrantedAuthority;
 

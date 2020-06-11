@@ -1,6 +1,7 @@
 package com.musicbox.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.musicbox.auth.common.security.JwtConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;

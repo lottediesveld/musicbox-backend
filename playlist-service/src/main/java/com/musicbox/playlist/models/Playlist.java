@@ -33,8 +33,7 @@ public class Playlist {
         this.songs = new ArrayList<>();
     }
 
-    public Playlist(long id, long userId, String title) {
-        this.id = id;
+    public Playlist(long userId, String title) {
         this.userId = userId;
         this.title = title;
         this.songs = new ArrayList<>();

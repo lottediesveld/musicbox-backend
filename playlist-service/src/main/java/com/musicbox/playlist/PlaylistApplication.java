@@ -30,11 +30,11 @@ public class PlaylistApplication {
     @Bean
     public CommandLineRunner demo(PlaylistService playlistService) {
         return args -> {
-            var playlist1 = new Playlist(1, 4,"lagorasplaylist");
+            var playlist1 = new Playlist(4,"lagorasplaylist");
             playlist1 = playlistService.newPlaylist(playlist1);
-            var playlist2 = new Playlist(2, 1, "victorysplaylist");
+            var playlist2 = new Playlist(1, "victorysplaylist");
             playlist2 =playlistService.newPlaylist(playlist2);
-            var playlist3 = new Playlist(3, 7, "qarnixsplaylist");
+            var playlist3 = new Playlist(7, "qarnixsplaylist");
             playlist3  = playlistService.newPlaylist(playlist3);
             //playlistRepository.save(playlist1);
 
