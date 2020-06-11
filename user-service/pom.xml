@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>13</java.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -116,10 +117,6 @@
                     <from>
                         <image>adoptopenjdk/openjdk13</image>
                     </from>
-
-                    <to>
-                        <image>docker.io/lottediesveld/user-service</image>
-                    </to>
                 </configuration>
             </plugin>
         </plugins>
