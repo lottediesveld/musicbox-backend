@@ -14,6 +14,10 @@ public class MessageProducer {
     @Autowired
     private DirectExchange directExchange;
 
+    public void newPlaylistForUser(String message) {
+        template.convertAndSend(directExchange.getName(), "new-user", message);
+    }
+
     public void deletePlaylistFromUser(String message) {
         template.convertAndSend(directExchange.getName(), "delete-user", message);
     }

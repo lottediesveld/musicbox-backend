@@ -1,4 +1,4 @@
-package com.musicbox.auth;
+package com.musicbox.auth.common.security;
 
 import org.springframework.beans.factory.annotation.Value;
 

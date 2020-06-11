@@ -1,5 +1,6 @@
 package com.musicbox.auth;
 
+import com.musicbox.auth.common.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
