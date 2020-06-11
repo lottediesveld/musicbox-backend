@@ -75,10 +75,6 @@
                     <from>
                         <image>adoptopenjdk/openjdk13</image>
                     </from>
-
-                    <to>
-                        <image>docker.io/lottediesveld/eurekaserver</image>
-                    </to>
                 </configuration>
             </plugin>
         </plugins>
