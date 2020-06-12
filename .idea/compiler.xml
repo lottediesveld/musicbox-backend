@@ -9,10 +9,10 @@
         <module name="artist-service" />
         <module name="gateway" />
         <module name="music-service" />
-        <module name="auth-service" />
+        <module name="eurekaserver" />
         <module name="library-service" />
         <module name="user-service" />
-        <module name="eurekaserver" />
+        <module name="auth-service" />
         <module name="admin-service" />
         <module name="playlist-service" />
       </profile>
@@ -22,10 +22,10 @@
       <module name="artist-service" target="11" />
       <module name="auth-service" target="13" />
       <module name="common" target="13" />
-      <module name="eurekaserver" target="11" />
+      <module name="eurekaserver" target="13" />
       <module name="gateway" target="13" />
       <module name="library-service" target="11" />
-      <module name="music-service" target="11" />
+      <module name="music-service" target="13" />
       <module name="playlist-service" target="13" />
       <module name="user-service" target="13" />
     </bytecodeTargetLevel>
