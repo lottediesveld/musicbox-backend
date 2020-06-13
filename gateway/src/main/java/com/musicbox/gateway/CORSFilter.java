@@ -8,8 +8,6 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -18,7 +16,7 @@ public class CORSFilter implements Filter{
     public void init(FilterConfig fc) throws ServletException {
     }
 
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "https://musicbox-frontend.azurewebsites.net/", "http://35.234.142.47");
+//    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "https://musicbox-frontend.azurewebsites.net/", "http://35.234.142.47");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp,
@@ -33,7 +31,7 @@ public class CORSFilter implements Filter{
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
 
         String origin = request.getHeader("Origin");
-        response.setHeader("Access-Control-Allow-Origin", allowedOrigins.contains(origin) ? origin : origin);
+        response.setHeader("Access-Control-Allow-Origin", /*allowedOrigins.contains(origin) ? origin :*/ origin);
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
