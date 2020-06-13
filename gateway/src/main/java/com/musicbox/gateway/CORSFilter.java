@@ -18,14 +18,14 @@ public class CORSFilter implements Filter{
     public void init(FilterConfig fc) throws ServletException {
     }
 
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "https://musicbox-frontend.azurewebsites.net/", "35.234.142.47");
+    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "https://musicbox-frontend.azurewebsites.net/", "http://35.234.142.47");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp,
                          FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) resp;
         HttpServletRequest request = (HttpServletRequest) req;
-//        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         //Headers allowed for error logging
