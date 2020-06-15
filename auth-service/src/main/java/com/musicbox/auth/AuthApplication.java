@@ -17,7 +17,6 @@ public class AuthApplication {
     @Configuration
     class RestTemplateConfig {
 
-        // Create a bean for restTemplate to call services
         @Bean
         public RestTemplate restTemplate() {
             return new RestTemplate();
