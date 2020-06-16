@@ -29,10 +29,16 @@ public class MusicApplication {
             var song1 = new Song("Love the way you lie", "Recovery", "Eminem");
             var song2 = new Song("Water", "It Was Good Until It Wasn't", "Kehlani");
             var song3 = new Song("Rope", "Wasting Light", "Foo Fighters");
+            var song4 = new Song("Seduction", "Recovery", "Eminem");
+            var song5 = new Song("What Now", "Unapologetic", "Rihanna");
+            var song6 = new Song("Still D.R.E.", "2001", "Dr. Dre");
 
             song1 = songRepository.save(song1);
             song2 = songRepository.save(song2);
             song3 = songRepository.save(song3);
+            song4 = songRepository.save(song4);
+            song5 = songRepository.save(song5);
+            song6 = songRepository.save(song6);
         };
     }
 }
