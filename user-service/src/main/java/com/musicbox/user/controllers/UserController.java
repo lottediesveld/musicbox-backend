@@ -78,8 +78,10 @@ public class UserController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = REST_URI_Constant.changePassword, method = RequestMethod.POST)
-    public boolean changePassword(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
-        return userService.changePassword(current(), oldPass, newPass);
+    public @ResponseBody
+    String changePassword(@RequestBody String newPass) {
+        Gson gson = new Gson();
+        return gson.toJson(userService.changePassword(current(), newPass));
     }
 
     @RequestMapping(value = REST_URI_Constant.userByUsername, method = RequestMethod.GET)

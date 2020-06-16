@@ -55,13 +55,31 @@ public class SongService {
 
     public Iterable<Song> searchSongs(String search) {
         List<Song> foundSongs = new ArrayList<>();
-        if (getByTitle(search) != null){
-            foundSongs.add(getByTitle(search));
-        } else if (getByArtist(search) != null) {
-            foundSongs.add(getByArtist(search));
-        } else if (getByAlbum(search) != null) {
-            foundSongs.add(getByAlbum(search));
+        Iterable<Song> allSongs = songRepo.findAll();
+        for (Song song: allSongs) {
+            System.out.println(song.getTitle());
+            if (song.getTitle().toLowerCase().equals(search.toLowerCase())){
+                foundSongs.add(song);
+            } else if (song.getArtist().toLowerCase().equals(search.toLowerCase())){
+                foundSongs.add(song);
+            } else if (song.getAlbum().toLowerCase().equals(search.toLowerCase())){
+                foundSongs.add(song);
+            } else if (song.getTitle().toLowerCase().contains(search.toLowerCase())){
+                foundSongs.add(song);
+            } else if (song.getArtist().toLowerCase().contains(search.toLowerCase())){
+                foundSongs.add(song);
+            } else if (song.getAlbum().toLowerCase().contains(search.toLowerCase())){
+                foundSongs.add(song);
+            }
+            System.out.println(foundSongs.size());
         }
+//        if (getByTitle(search) != null){
+//            foundSongs.add(getByTitle(search));
+//        } else if (getByArtist(search) != null) {
+//            foundSongs.add(getByArtist(search));
+//        } else if (getByAlbum(search) != null) {
+//            foundSongs.add(getByAlbum(search));
+//        }
         return foundSongs;
     }
 

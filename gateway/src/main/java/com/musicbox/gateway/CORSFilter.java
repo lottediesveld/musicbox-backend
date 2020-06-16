@@ -18,7 +18,7 @@ public class CORSFilter implements Filter{
     public void init(FilterConfig fc) throws ServletException {
     }
 
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "http://35.246.102.210", "http://35.230.157.92");
+    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "http://35.230.157.92");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp,
