@@ -107,11 +107,9 @@ public class UserService {
         return user;
     }
 
-    public boolean changePassword(User user, String oldPass, String newPass) {
-        if (passwordEncoder.encode(oldPass) != user.getPassword())
-            return false;
+    public String changePassword(User user, String newPass) {
         user.setPassword(passwordEncoder.encode(newPass));
         userRepository.save(user);
-        return true;
+        return "saved";
     }
 }
