@@ -58,6 +58,8 @@ public class UserService {
             userRepository.save(updateUser);
             updateUser.setPassword(null);
             return "error";
+        } else if (userRepository.existsByEmail(user.getEmail())){
+            throw new Exception("Account already exists with this email");
         } else if (!userRepository.existsByEmail(user.getEmail()) || !userRepository.existsByUsername(user.getUsername())) {
             var updateUser = modelMapper.map(user, User.class);
             User newUser = new User(updateUser.getFirstName(), updateUser.getLastName(), updateUser.getUsername(), updateUser.getPassword(), updateUser.getEmail(), true, true, true, true, USER.getGrantedAuthorities());
