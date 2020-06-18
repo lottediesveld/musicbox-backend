@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class UserRepositoryIntegrationTest {
+public class UserRepositoryIntegrationTests {
 
     @Autowired
     private UserRepository subject;
