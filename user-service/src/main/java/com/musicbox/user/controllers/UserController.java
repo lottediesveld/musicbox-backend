@@ -32,9 +32,7 @@ public class UserController {
 
         userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
 
-        var result = userService.newUser(userObject);
-
-        return gson.toJson(result);
+        return gson.toJson(userService.newUser(userObject));
     }
 
     @PreAuthorize("isAuthenticated()")
