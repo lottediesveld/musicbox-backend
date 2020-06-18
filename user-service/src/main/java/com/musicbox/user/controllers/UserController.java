@@ -26,13 +26,15 @@ public class UserController {
 
     @PostMapping(value = REST_URI_Constant.newUser)
     public @ResponseBody
-    String customerRegister(@RequestBody String user) throws Exception {
+    String userRegister(@RequestBody String user) throws Exception {
         Gson gson = new Gson();
         var userObject = gson.fromJson(user, UserRegisterDTO.class);
 
         userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
 
-        return gson.toJson(userService.newUser(userObject));
+        var result = userService.newUser(userObject);
+
+        return gson.toJson(result);
     }
 
     @PreAuthorize("isAuthenticated()")
